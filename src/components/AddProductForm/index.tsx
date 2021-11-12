@@ -3,28 +3,26 @@ import { v4 as uuidv4 } from "uuid";
 import { Product } from "../TypeInterFace";
 
 interface Props {
-  currentProduct: Product | null;
+  newProduct: Product | null;
   onAdd: (itemProduct: Product) => void;
   onUpdate: (itemProduct: Product) => void;
   onClose: () => void;
 }
 
 export const AddProductForm: React.FC<Props> = ({
-  currentProduct,
+  newProduct,
   onAdd,
   onUpdate,
   onClose,
 }) => {
-  const [inputAvatar, setInputAvatar] = useState(currentProduct?.avatar || "");
-  const [inputName, setInputName] = useState(currentProduct?.name || "");
-  const [inputContent, setInputContent] = useState(
-    currentProduct?.content || ""
-  );
+  const [inputAvatar, setInputAvatar] = useState(newProduct?.avatar || "");
+  const [inputName, setInputName] = useState(newProduct?.name || "");
+  const [inputContent, setInputContent] = useState(newProduct?.content || "");
 
   const handleSubmit = () => {
-    if (currentProduct && onUpdate) {
+    if (newProduct && onUpdate) {
       onUpdate({
-        id: currentProduct.id,
+        id: newProduct.id,
         name: inputName,
         content: inputContent,
         avatar: inputAvatar,

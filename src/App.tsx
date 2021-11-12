@@ -13,7 +13,7 @@ import { Product } from "./components/TypeInterFace";
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [listProduct, setListProduct] = useState<Product[]>([]);
-  const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
+  const [newProduct, setNewProduct] = useState<Product | null>(null);
 
   const handleOpenModal = () => {
     setIsModalVisible(true);
@@ -53,7 +53,7 @@ function App() {
     }
   };
   const handleEdit = (itemProduct: Product) => {
-    setCurrentProduct(itemProduct);
+    setNewProduct(itemProduct);
     setIsModalVisible(true);
   };
   const handleUpdate = async (itemProduct: Product) => {
@@ -93,7 +93,7 @@ function App() {
         onCancel={handleCancel}
       >
         <AddProductForm
-          currentProduct={currentProduct}
+          newProduct={newProduct}
           onAdd={handleAdd}
           onClose={handleClose}
           onUpdate={handleUpdate}
